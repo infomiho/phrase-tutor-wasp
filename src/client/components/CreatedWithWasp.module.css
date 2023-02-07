@@ -1,0 +1,13 @@
+.createdWithWasp {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--vt-c-white-mute);
+    border-radius: 50px;
+}
+
+.createdWithWasp:hover {
+    background-color: transparent;
+}

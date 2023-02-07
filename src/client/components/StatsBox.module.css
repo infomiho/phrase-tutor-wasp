@@ -1,0 +1,51 @@
+.StatsBox {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	border-radius: 0.25rem;
+	background-color: #fff;
+	border: 3px solid #eee;
+	transition: background 0.2s ease-in-out;
+}
+
+.StatsBox:hover {
+	background-color: #f5f5f5;
+}
+
+.StatsBoxPhrase {
+	flex: 1;
+	margin-right: 1rem;
+}
+
+.StatsBoxPhraseText {
+	font-size: 1.25rem;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+}
+
+.StatsBoxPhraseTranslations {
+	color: #666;
+}
+
+.StatsBoxDetails {
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: #333;
+}
+
+.StatsBox.low {
+	background-color: rgba(255, 0, 0, 0.05);
+	border-color: rgba(255, 0, 0, 0.1);
+}
+
+.NewTag {
+	background-color: #00b300;
+	color: #fff;
+	padding: 0.1rem 0.25rem;
+	border-radius: 0.25rem;
+	font-size: 0.5em;
+	margin-left: 0.25rem;
+	white-space: nowrap;
+}

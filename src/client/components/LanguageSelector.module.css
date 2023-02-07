@@ -1,0 +1,14 @@
+.title {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+.button {
+    /* simple white button */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    color: #333;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0 0.5rem;
+}

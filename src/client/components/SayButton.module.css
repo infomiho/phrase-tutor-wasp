@@ -1,0 +1,20 @@
+.play {
+	background-color: #fff;
+	background-image: url('../assets/sound.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 70%;
+	border-radius: 50%;
+	border: 1px solid #333;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	height: 30px;
+	width: 30px;
+}
+
+.play.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}

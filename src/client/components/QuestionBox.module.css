@@ -1,0 +1,45 @@
+.QuestionBox {
+}
+.QuestionBoxText {
+	background-color: #eaeaea;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+.QuestionBoxForeign {
+	font-size: 2rem;
+	font-weight: bold;
+}
+.QuestionBoxAnswer {
+	background-color: #fff;
+	color: #333;
+	border: 1px solid #333;
+	padding: 1rem;
+	margin: 1rem 0;
+	display: flex;
+	align-items: center;
+}
+.QuestionBoxAnswerText {
+	margin-right: 0.5rem;
+}
+.button {
+	background-color: #3c4048;
+	color: #fff;
+	border: none;
+	padding: 1rem;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.button.correct {
+	background-color: #00abb3;
+}
+.button.incorrect {
+	background-color: #e5cb9f;
+	color: #333;
+}
+.button + .button {
+	margin-left: 0.5rem;
+}
+.button:disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}

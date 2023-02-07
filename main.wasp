@@ -1,0 +1,88 @@
+app phraseTutor {
+  wasp: {
+    version: "^0.8.0"
+  },
+  title: "Phrase Tutor",
+  auth: {
+    userEntity: User,
+    externalAuthEntity: SocialUser,
+    methods: {
+      google: {
+        getUserFieldsFn: import { getUserFields } from "@server/auth/google.js"
+      }
+    },
+    onAuthFailedRedirectTo: "/"
+  },
+  dependencies: [
+    ("zustand", "4.3.2")
+  ],
+  db: {
+    system: PostgreSQL,
+  }
+}
+
+route HomeRoute { path: "/", to: HomePage }
+page HomePage {
+  component: import Main from "@client/pages/Home/HomePage.jsx"
+}
+route StatsRoute { path: "/stats", to: StatsPage }
+page StatsPage {
+  component: import Main from "@client/pages/Stats/StatsPage.jsx"
+}
+
+query fetchAllPhrases {
+  fn: import { getAllPhrases } from "@server/queries.js",
+  entities: [Phrase]
+}
+
+query fetchLanguages {
+  fn: import { getLanguages } from "@server/queries.js",
+  entities: [Language]
+}
+
+action seedItalianPhrases {
+  fn: import { seedItalianPhrases } from "@server/actions.js",
+  entities: [Phrase, Language, Translation]
+}
+
+entity User {=psl
+  id Int @id @default(autoincrement())
+  username String @unique
+  password String
+  profilePicture String
+  externalAuthAssociations SocialUser[]
+  createdAt DateTime @default(now())
+psl=}
+
+entity SocialUser {=psl
+  id          Int       @id @default(autoincrement())
+  provider    String
+  providerId  String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int
+  createdAt   DateTime  @default(now())
+  @@unique([provider, providerId, userId])
+psl=}
+
+entity Phrase {=psl
+  id Int @id @default(autoincrement())
+  group String
+  phrase String
+  translations Translation[]
+psl=}
+
+entity Language {=psl
+  id Int @id @default(autoincrement())
+  name String @unique
+  emoji String
+  translations Translation[]
+psl=}
+
+entity Translation {=psl
+  id Int @id @default(autoincrement())
+  phraseId Int
+  languageId Int
+  translation String
+  phrase Phrase @relation(fields: [phraseId], references: [id], onDelete: Cascade)
+  language Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
+psl=}
