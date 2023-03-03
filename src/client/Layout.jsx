@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 import { signInUrl as googleSignInUrl } from "@wasp/auth/helpers/Google";
 import useAuth from "@wasp/auth/useAuth.js";
 import logout from "@wasp/auth/logout.js";
-import "../Base.css";
+import "./Base.css";
 
-import { useGeneralStore } from "../stores/general.js";
+import { useGeneralStore } from "./stores/general.js";
 
-import { CreatedWithWasp } from "./CreatedWithWasp.jsx";
+import { CreatedWithWasp } from "./components/CreatedWithWasp.jsx";
 
 export function Layout({ header = true, children }) {
     const activeClassName = styles.active;
@@ -73,9 +73,19 @@ export function Layout({ header = true, children }) {
             {children}
 
             <footer className={styles.footer}>
-                <p>
+                <div className={styles.footerBanner}>
                     <CreatedWithWasp />
-                </p>
+                    <small>
+                        Check out the{" "}
+                        <a
+                            href="https://github.com/infomiho/phrase-tutor-wasp"
+                            target="_blank"
+                        >
+                            source code
+                        </a>
+                        .
+                    </small>
+                </div>
             </footer>
         </>
     );
