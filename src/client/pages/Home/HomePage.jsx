@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-import { Layout } from "../../components/Layout";
 import { QuestionBox } from "../../components/QuestionBox";
 import { ContentLoader } from "../../components/ContentLoader";
 import { LanguageSelector } from "../../components/LanguageSelector";
@@ -31,20 +30,18 @@ const MainPage = () => {
         handleNextPhrase();
     }, [phrases]);
     return (
-        <Layout>
-            <main className={styles.home}>
-                {isLoading && <ContentLoader />}
-                {currentPhrase && (
-                    <div className={styles.content}>
-                        <LanguageSelector />
-                        <QuestionBox
-                            phrase={currentPhrase}
-                            onNext={handleNextPhrase}
-                        />
-                    </div>
-                )}
-            </main>
-        </Layout>
+        <main className={styles.home}>
+            {isLoading && <ContentLoader />}
+            {currentPhrase && (
+                <div className={styles.content}>
+                    <LanguageSelector />
+                    <QuestionBox
+                        phrase={currentPhrase}
+                        onNext={handleNextPhrase}
+                    />
+                </div>
+            )}
+        </main>
     );
 };
 export default MainPage;

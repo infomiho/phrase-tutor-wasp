@@ -1,6 +1,6 @@
 app phraseTutor {
   wasp: {
-    version: "^0.8.0"
+    version: "^0.8.2"
   },
   title: "Phrase Tutor",
   auth: {
@@ -12,6 +12,9 @@ app phraseTutor {
       }
     },
     onAuthFailedRedirectTo: "/"
+  },
+  client: {
+    rootComponent: import { Layout } from "@client/components/Layout.jsx",
   },
   dependencies: [
     ("zustand", "4.3.2")

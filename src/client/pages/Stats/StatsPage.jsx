@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 
-import { Layout } from "../../components/Layout";
 import { StatsBox } from "../../components/StatsBox";
 import { ContentLoader } from "../../components/ContentLoader";
 
@@ -48,34 +47,32 @@ const StatsPage = () => {
     }, [phrases.data, stats]);
     const statsSummary = useMemo(() => calculateSummary(stats), [stats]);
     return (
-        <Layout>
-            <div className={styles.stats}>
-                <p className={styles.summary}>
-                    <strong>
-                        {statsSummary.total} phrases played /{" "}
-                        {statsSummary.correctPercentage}% success
-                    </strong>
-                </p>
-                <p>
-                    If you want to restart, you can{" "}
-                    <button className={`a ${styles.a}`} onClick={resetStats}>
-                        delete your stats
-                    </button>
-                    .
-                </p>
-                {phrases.isLoading && <ContentLoader />}
-                <div className={styles.StatsBoxes}>
-                    {statsSorted &&
-                        statsSorted.map((data) => (
-                            <StatsBox
-                                key={data.phrase.id}
-                                phrase={data.phrase}
-                                stats={data.stats}
-                            />
-                        ))}
-                </div>
+        <div className={styles.stats}>
+            <p className={styles.summary}>
+                <strong>
+                    {statsSummary.total} phrases played /{" "}
+                    {statsSummary.correctPercentage}% success
+                </strong>
+            </p>
+            <p>
+                If you want to restart, you can{" "}
+                <button className={`a ${styles.a}`} onClick={resetStats}>
+                    delete your stats
+                </button>
+                .
+            </p>
+            {phrases.isLoading && <ContentLoader />}
+            <div className={styles.StatsBoxes}>
+                {statsSorted &&
+                    statsSorted.map((data) => (
+                        <StatsBox
+                            key={data.phrase.id}
+                            phrase={data.phrase}
+                            stats={data.stats}
+                        />
+                    ))}
             </div>
-        </Layout>
+        </div>
     );
 };
 
