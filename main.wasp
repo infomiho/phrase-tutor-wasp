@@ -1,6 +1,6 @@
 app phraseTutor {
   wasp: {
-    version: "^0.8.2"
+    version: "^0.11.0"
   },
   title: "Phrase Tutor",
   auth: {
@@ -21,6 +21,9 @@ app phraseTutor {
   ],
   db: {
     system: PostgreSQL,
+    seeds: [
+      import { seedItalianPhrases } from "@server/seeds.js"
+    ]
   }
 }
 
@@ -41,11 +44,6 @@ query fetchAllPhrases {
 query fetchLanguages {
   fn: import { getLanguages } from "@server/queries.js",
   entities: [Language]
-}
-
-action seedItalianPhrases {
-  fn: import { seedItalianPhrases } from "@server/actions.js",
-  entities: [Phrase, Language, Translation]
 }
 
 entity User {=psl
