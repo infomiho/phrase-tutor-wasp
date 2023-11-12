@@ -10,6 +10,7 @@ env:
   SERVER_IMAGE_NAME: ${{ github.repository }}-server
   CLIENT_IMAGE_NAME: ${{ github.repository }}-client
   WASP_TELEMETRY_DISABLED: 1
+  SERVER_APP_URL: ${{ secrets.SERVER_APP_URL }}
 
 jobs:
   build-and-push-images:
