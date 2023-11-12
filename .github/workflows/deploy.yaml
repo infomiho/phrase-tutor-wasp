@@ -16,6 +16,10 @@ jobs:
   build-and-push-images:
     runs-on: ubuntu-latest
 
+    outputs:
+      server-image-tag: ${{ steps.meta-server.outputs.tags }}
+      client-image-tag: ${{ steps.meta-client.outputs.tags }}
+
     permissions:
       contents: read
       packages: write
@@ -95,7 +99,7 @@ jobs:
           server: "${{ secrets.CAPROVER_SERVER }}"
           app: "${{ secrets.SERVER_APP_NAME }}"
           token: "${{ secrets.SERVER_APP_TOKEN }}"
-          image: ${{ steps.meta-server.outputs.tags }}
+          image: ${{ needs.build-and-push-images.outputs.server-image-tag }}
 
       - name: (client) Deploy to Caprover
         uses: caprover/deploy-from-github@v1.1.2
@@ -103,4 +107,4 @@ jobs:
           server: "${{ secrets.CAPROVER_SERVER }}"
           app: "${{ secrets.CLIENT_APP_NAME }}"
           token: "${{ secrets.CLIENT_APP_TOKEN }}"
-          image: ${{ steps.meta-client.outputs.tags }}
+          image: ${{ needs.build-and-push-images.outputs.client-image-tag }}
