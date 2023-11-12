@@ -47,6 +47,8 @@ jobs:
         shell: bash
         run: curl -sSL https://get.wasp-lang.dev/installer.sh | sh
 
+      # TODO: maybe introduce caching of the built app or npm packages
+
       - name: Build Wasp app
         shell: bash
         run: wasp build
@@ -93,7 +95,7 @@ jobs:
           server: "${{ secrets.CAPROVER_SERVER }}"
           app: "${{ secrets.SERVER_APP_NAME }}"
           token: "${{ secrets.SERVER_APP_TOKEN }}"
-          image: ${{ env.REGISTRY }}/${{ env.SERVER_IMAGE_NAME }}
+          image: ${{ steps.meta-server.outputs.tags }}
 
       - name: (client) Deploy to Caprover
         uses: caprover/deploy-from-github@v1.1.2
@@ -101,4 +103,4 @@ jobs:
           server: "${{ secrets.CAPROVER_SERVER }}"
           app: "${{ secrets.CLIENT_APP_NAME }}"
           token: "${{ secrets.CLIENT_APP_TOKEN }}"
-          image: ${{ env.REGISTRY }}/${{ env.CLIENT_IMAGE_NAME }}
+          image: ${{ steps.meta-client.outputs.tags }}
