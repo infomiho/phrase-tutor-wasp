@@ -39,7 +39,6 @@ jobs:
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
           images: ${{ env.REGISTRY }}/${{ env.SERVER_IMAGE_NAME }}
-
     
       - name: (client) Extract metadata (tags, labels) for Docker
         id: meta-client
@@ -51,7 +50,7 @@ jobs:
         shell: bash
         run: curl -sSL https://get.wasp-lang.dev/installer.sh | sh
 
-      # TODO: maybe introduce caching of the built app or npm packages
+      # TODO: maybe introduce caching of the built app or npm packages https://github.com/actions/setup-node#caching-global-packages-data
 
       - name: Build Wasp app
         shell: bash

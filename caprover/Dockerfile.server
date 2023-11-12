@@ -9,6 +9,8 @@ WORKDIR /app
 
 COPY . /app
 
+ENV WASP_TELEMETRY_DISABLED=1
+
 RUN wasp build
 
 # Building the server
