@@ -39,6 +39,11 @@ page StatsPage {
   component: import Main from "@client/pages/Stats/StatsPage.jsx"
 }
 
+route AdminRoute { path: "/admin", to: Admin }
+page Admin {
+  component: import { SimplePage } from "@client/admin/pages/SimplePage"
+}
+
 query fetchAllPhrases {
   fn: import { getAllPhrases } from "@server/queries.js",
   entities: [Phrase]
@@ -53,6 +58,7 @@ entity User {=psl
   id Int @id @default(autoincrement())
   username String @unique
   password String
+  role String @default("user")
   profilePicture String
   externalAuthAssociations SocialUser[]
   createdAt DateTime @default(now())

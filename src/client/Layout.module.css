@@ -1,115 +1,115 @@
 .header {
-    padding: 1rem 0;
+  padding: 1rem 0;
 }
 
 .headerTitle {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .headerTitle a + a {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .headerTitle a.active .title {
-    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .title {
-    background-color: var(--color-primary);
-    color: #fff;
-    display: inline-block;
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: all 0.2s ease-in-out;
+  background-color: var(--color-primary);
+  color: #fff;
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .stats {
-    background-color: var(--color-secondary);
+  background-color: var(--color-secondary);
 }
 
 .title:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 @media (min-width: 768px) {
-    .header {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        padding: 1rem 0 2rem;
-    }
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 1rem 0 2rem;
+  }
 
-    .title {
-        font-size: 1.5rem;
-    }
+  .title {
+    font-size: 1.5rem;
+  }
 }
 
 .intro {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 1rem;
-    margin: 0 auto 1rem;
-    max-width: 800px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 0 auto 1rem;
+  max-width: 800px;
 }
 
 .intro p + p {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .dismiss {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
 }
 
 .dismiss:hover {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 .footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
 }
 
 .footerBanner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .user .profile {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .user .profile:hover {
-    background: #eee;
-    border-radius: 10px;
-    padding: 0.5rem;
+  background: #eee;
+  border-radius: 10px;
+  padding: 0.5rem;
 }
 
 .user .profile img {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    margin-right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
 }

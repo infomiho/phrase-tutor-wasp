@@ -1,57 +1,57 @@
 .title {
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .stats p {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.stats table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-th,
-td {
-    padding: 0.5rem;
+.stats th,
+.stats td {
+  padding: 0.5rem;
 }
 
-thead th {
-    background-color: #00abb3;
-    color: #fff;
-    text-align: left;
+.stats thead th {
+  background-color: #00abb3;
+  color: #fff;
+  text-align: left;
 }
 
 tr.low {
-    background-color: #ffcccc;
+  background-color: #ffcccc;
 }
 
 button.a {
-    background-color: transparent;
-    border: none;
-    font-size: inherit;
-    padding: 0;
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  padding: 0;
+  cursor: pointer;
 }
 
 button.switch {
-    background: rgba(255, 255, 255, 0.5);
-    border: none;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    color: #333;
-    margin-left: 0.25rem;
-    cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  color: #333;
+  margin-left: 0.25rem;
+  cursor: pointer;
 }
 
 .summary {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .StatsBoxes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 0.5rem;
 }
