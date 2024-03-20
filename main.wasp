@@ -8,7 +8,6 @@ app phraseTutor {
   title: "Phrase Tutor",
   auth: {
     userEntity: User,
-    externalAuthEntity: SocialUser,
     methods: {
       google: {
         userSignupFields: import { userSignupFields } from "@src/auth/google.js"
@@ -49,20 +48,8 @@ query fetchLanguages {
 entity User {=psl
   id Int @id @default(autoincrement())
   username String @unique
-  password String
   profilePicture String
-  externalAuthAssociations SocialUser[]
   createdAt DateTime @default(now())
-psl=}
-
-entity SocialUser {=psl
-  id          Int       @id @default(autoincrement())
-  provider    String
-  providerId  String
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      Int
-  createdAt   DateTime  @default(now())
-  @@unique([provider, providerId, userId])
 psl=}
 
 entity Phrase {=psl
@@ -87,9 +74,3 @@ entity Translation {=psl
   phrase Phrase @relation(fields: [phraseId], references: [id], onDelete: Cascade)
   language Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
 psl=}
-
-api migrateGoogle {
-  httpRoute: (GET, "/migrate-google"),
-  fn: import { migrateGoogleHandler } from "@src/migrateToNewAuth",
-  entities: []
-}
