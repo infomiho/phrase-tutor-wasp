@@ -1,7 +1,7 @@
+import { useAuth } from "wasp/client/auth";
 import { useState } from "react";
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
-import useAuth from "@wasp/auth/useAuth";
 import { Redirect } from "react-router-dom";
 import { Loader } from "./components/Loader";
 

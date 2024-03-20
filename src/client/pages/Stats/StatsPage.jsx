@@ -1,12 +1,10 @@
+import { useQuery, fetchAllPhrases } from "wasp/client/operations";
 import { useMemo } from "react";
 
 import { StatsBox } from "../../components/StatsBox";
 import { ContentLoader } from "../../components/ContentLoader";
 
 import styles from "./Stats.module.css";
-
-import { useQuery } from "@wasp/queries";
-import fetchAllPhrases from "@wasp/queries/fetchAllPhrases";
 
 import { useStatsStore } from "../../stores/stats";
 

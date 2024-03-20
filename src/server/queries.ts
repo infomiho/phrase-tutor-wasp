@@ -1,5 +1,4 @@
-import { FetchAllPhrases } from "@wasp/queries/types";
-import { FetchLanguages } from "@wasp/queries/types";
+import { type FetchAllPhrases, type FetchLanguages } from "wasp/server/operations";
 
 export const getAllPhrases = (async (_args, context) => {
   return context.entities.Phrase.findMany({

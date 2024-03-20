@@ -1,5 +1,4 @@
-import { useQuery } from "@wasp/queries";
-import fetchAllPhrases from "@wasp/queries/fetchAllPhrases";
+import { useQuery, fetchAllPhrases } from "wasp/client/operations";
 
 export function SimplePage() {
   const { data: phrases, isLoading } = useQuery(fetchAllPhrases);

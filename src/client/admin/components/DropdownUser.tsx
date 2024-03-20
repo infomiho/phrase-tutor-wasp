@@ -1,7 +1,6 @@
-import useAuth from "@wasp/auth/useAuth";
+import { logout, useAuth } from "wasp/client/auth";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import logout from "@wasp/auth/logout";
 
 export const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

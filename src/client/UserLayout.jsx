@@ -1,8 +1,6 @@
+import { logout, useAuth, googleSignInUrl } from "wasp/client/auth";
 import styles from "./Layout.module.css";
 import { NavLink } from "react-router-dom";
-import { signInUrl as googleSignInUrl } from "@wasp/auth/helpers/Google";
-import useAuth from "@wasp/auth/useAuth";
-import logout from "@wasp/auth/logout";
 import "./Base.css";
 
 import { useGeneralStore } from "./stores/general.js";

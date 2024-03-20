@@ -1,11 +1,9 @@
+import { useQuery, fetchLanguages } from "wasp/client/operations";
 import { useEffect } from "react";
 
 import styles from "./LanguageSelector.module.css";
 
 import { useLanguagesStore } from "../stores/languages";
-
-import { useQuery } from "@wasp/queries";
-import fetchLanguages from "@wasp/queries/fetchLanguages";
 
 export function LanguageSelector() {
     const { data: languagesData } = useQuery(fetchLanguages);
