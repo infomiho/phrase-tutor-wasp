@@ -1,6 +1,6 @@
 app phraseTutor {
   wasp: {
-    version: "^0.11.0"
+    version: "^0.13.0"
   },
   head: [
     "<script defer data-domain=\"phrasetutor.com\" src=\"http://plausible.apps.twoducks.dev/js/script.js\"></script>"
@@ -11,41 +11,38 @@ app phraseTutor {
     externalAuthEntity: SocialUser,
     methods: {
       google: {
-        getUserFieldsFn: import { getUserFields } from "@server/auth/google.js"
+        userSignupFields: import { userSignupFields } from "@src/auth/google.js"
       }
     },
     onAuthFailedRedirectTo: "/"
   },
   client: {
-    rootComponent: import { Layout } from "@client/Layout.jsx",
+    rootComponent: import { Layout } from "@src/Layout.jsx",
   },
-  dependencies: [
-    ("zustand", "4.3.2")
-  ],
   db: {
     system: PostgreSQL,
     seeds: [
-      import { seedItalianPhrases } from "@server/seeds.js"
+      import { seedItalianPhrases } from "@src/seeds.js"
     ]
   }
 }
 
 route HomeRoute { path: "/", to: HomePage }
 page HomePage {
-  component: import Main from "@client/pages/Home/HomePage.jsx"
+  component: import Main from "@src/pages/Home/HomePage.jsx"
 }
 route StatsRoute { path: "/stats", to: StatsPage }
 page StatsPage {
-  component: import Main from "@client/pages/Stats/StatsPage.jsx"
+  component: import Main from "@src/pages/Stats/StatsPage.jsx"
 }
 
 query fetchAllPhrases {
-  fn: import { getAllPhrases } from "@server/queries.js",
+  fn: import { getAllPhrases } from "@src/queries.js",
   entities: [Phrase]
 }
 
 query fetchLanguages {
-  fn: import { getLanguages } from "@server/queries.js",
+  fn: import { getLanguages } from "@src/queries.js",
   entities: [Language]
 }
 
@@ -90,3 +87,9 @@ entity Translation {=psl
   phrase Phrase @relation(fields: [phraseId], references: [id], onDelete: Cascade)
   language Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
 psl=}
+
+api migrateGoogle {
+  httpRoute: (GET, "/migrate-google"),
+  fn: import { migrateGoogleHandler } from "@src/migrateToNewAuth",
+  entities: []
+}

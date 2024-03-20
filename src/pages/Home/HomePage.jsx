@@ -1,3 +1,4 @@
+import { useQuery, fetchAllPhrases } from "wasp/client/operations";
 import { useState, useEffect } from "react";
 
 import { QuestionBox } from "../../components/QuestionBox";
@@ -5,9 +6,6 @@ import { ContentLoader } from "../../components/ContentLoader";
 import { LanguageSelector } from "../../components/LanguageSelector";
 
 import styles from "./Home.module.css";
-
-import { useQuery } from "@wasp/queries";
-import fetchAllPhrases from "@wasp/queries/fetchAllPhrases";
 
 import { getRandomPhrase } from "../../helpers/phrases";
 import { useStatsStore } from "../../stores/stats";
