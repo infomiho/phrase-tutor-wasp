@@ -2,9 +2,6 @@ app phraseTutor {
   wasp: {
     version: "^0.13.0"
   },
-  head: [
-    "<script defer data-domain=\"phrasetutor.com\" src=\"http://plausible.apps.twoducks.dev/js/script.js\"></script>"
-  ],
   title: "Phrase Tutor",
   auth: {
     userEntity: User,
