@@ -1,0 +1,38 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  username       String   @unique
+  profilePicture String
+  createdAt      DateTime @default(now())
+}
+
+model Phrase {
+  id           Int           @id @default(autoincrement())
+  group        String
+  phrase       String
+  translations Translation[]
+}
+
+model Language {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  emoji        String
+  translations Translation[]
+}
+
+model Translation {
+  id          Int      @id @default(autoincrement())
+  phraseId    Int
+  languageId  Int
+  translation String
+  phrase      Phrase   @relation(fields: [phraseId], references: [id], onDelete: Cascade)
+  language    Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
+}

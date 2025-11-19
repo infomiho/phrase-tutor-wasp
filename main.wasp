@@ -1,7 +1,10 @@
 app phraseTutor {
   wasp: {
-    version: "^0.13.0"
+    version: "^0.19.0"
   },
+  head: [
+    "<link rel='icon' href='/favicon.ico' />",
+  ],
   title: "Phrase Tutor",
   auth: {
     userEntity: User,
@@ -16,7 +19,6 @@ app phraseTutor {
     rootComponent: import { Layout } from "@src/Layout.jsx",
   },
   db: {
-    system: PostgreSQL,
     seeds: [
       import { seedItalianPhrases } from "@src/seeds.js"
     ]
@@ -41,33 +43,3 @@ query fetchLanguages {
   fn: import { getLanguages } from "@src/queries.js",
   entities: [Language]
 }
-
-entity User {=psl
-  id Int @id @default(autoincrement())
-  username String @unique
-  profilePicture String
-  createdAt DateTime @default(now())
-psl=}
-
-entity Phrase {=psl
-  id Int @id @default(autoincrement())
-  group String
-  phrase String
-  translations Translation[]
-psl=}
-
-entity Language {=psl
-  id Int @id @default(autoincrement())
-  name String @unique
-  emoji String
-  translations Translation[]
-psl=}
-
-entity Translation {=psl
-  id Int @id @default(autoincrement())
-  phraseId Int
-  languageId Int
-  translation String
-  phrase Phrase @relation(fields: [phraseId], references: [id], onDelete: Cascade)
-  language Language @relation(fields: [languageId], references: [id], onDelete: Cascade)
-psl=}

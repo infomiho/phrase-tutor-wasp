@@ -1,14 +1,13 @@
 import { logout, useAuth, googleSignInUrl } from "wasp/client/auth";
 import styles from "./Layout.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import "./Base.css";
 
 import { useGeneralStore } from "./stores/general.js";
 
 import { CreatedWithWasp } from "./components/CreatedWithWasp.jsx";
 
-export function Layout({ header = true, children }) {
-  const activeClassName = styles.active;
+export function Layout({ header = true }) {
   const { data: user } = useAuth();
   const introDismissed = useGeneralStore((state) => state.introDismissed);
   const dismiss = useGeneralStore((state) => state.dismiss);
@@ -17,10 +16,10 @@ export function Layout({ header = true, children }) {
       {header && (
         <header className={styles.header}>
           <div className={styles.headerTitle}>
-            <NavLink to="/" activeClassName={activeClassName} exact>
+            <NavLink to="/" className={({ isActive }) => isActive ? styles.active : ""} end>
               <h2 className={styles.title}>Phrase Tutor</h2>
             </NavLink>
-            <NavLink to="/stats" activeClassName={activeClassName}>
+            <NavLink to="/stats" className={({ isActive }) => isActive ? styles.active : ""}>
               <h2 className={`${styles.title} ${styles.stats}`}>Stats</h2>
             </NavLink>
           </div>
@@ -65,7 +64,7 @@ export function Layout({ header = true, children }) {
         </div>
       )}
 
-      {children}
+      <Outlet />
 
       <footer className={styles.footer}>
         <div className={styles.footerBanner}>
